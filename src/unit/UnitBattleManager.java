@@ -22,11 +22,10 @@ public class UnitBattleManager {
 	}
 	
 	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit defendingUnit) {
-		/*
-		 * 
-		 * 			!!!SEREGA!!!
-		 *
+		/**
+		 * @author SunnyP
 		 */
+		
 		return null;
 	}
 	
