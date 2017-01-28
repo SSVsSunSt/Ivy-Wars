@@ -22,7 +22,10 @@ public class Unit {
 	private int movementPoints;
 	
 	//	Health
-	private int currentHealth;
+	private byte currentHealth;
+	
+	//Rank
+	private float rank;
 	
 	public Unit(UnitClass unitClass, Player player) {
 		this.unitClass = unitClass;
@@ -81,12 +84,32 @@ public class Unit {
 	 * This method gives current health of the unit;
 	 * @return : Integer;
 	 */
-	public int getHealth() {return currentHealth;}
+	public byte getHealth() {return currentHealth;}
 	
 	/**
 	 * This method sets health to this unit;
 	 * @param health : Integer;
 	 */
-	public void setHealth(int health) {this.currentHealth = health;}
+	public void setHealth(byte health) {this.currentHealth = health;}
+	
+	/**
+	 * This method gives rank of the unit;
+	 * @return : float;
+	 * @author SunnyP
+	 */
+	public float getRank()
+	{
+		return rank;
+	}
+	
+	/**
+	 * This method sets rank to this unit;
+	 * @param rank : float;
+	 * @author SunnyP
+	 */
+	public void setRank(float rankN) 
+	{
+		this.rank = rankN;
+	}
 }
 
