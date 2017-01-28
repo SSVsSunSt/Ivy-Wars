@@ -13,16 +13,16 @@ public class UnitClass {
 	//	Properties
 	public final String name;
 	
-	public final int strength;
+	public final float strength;
 	
-	public final int movement;
+	public final byte movement;
 	
-	public final int maxRank;
+	public final byte maxRank;
 	
 	//	Actions
 	public final UnitAction[] actions;
 	
-	public UnitClass(String name, int strength, int movements, int maxRank, UnitAction[] actions) {
+	public UnitClass(String name, float strength, byte movements, byte maxRank, UnitAction[] actions) {
 		this.strength = strength;
 		this.movement = movements;
 		this.maxRank = maxRank;
