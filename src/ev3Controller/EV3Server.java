@@ -10,6 +10,8 @@ import gameLoop.StepByStepGameLoop;
 
 public class EV3Server {
 	
+	//	TEST
+	
 	//	Button constants
 	public static final int ESCAPE = 0;
 	public static final int ENTER = 1;
