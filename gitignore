@@ -1,2 +1,4 @@
-.project
+.project/*
 .settings/*
+*.DS_Store
+.metadata/*

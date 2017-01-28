@@ -14,6 +14,7 @@ public class UnitClass {
 	public final String name;
 	
 	public final int strength;
+	
 	public final int movement;
 	
 	public final int maxRank;
@@ -30,5 +31,4 @@ public class UnitClass {
 		
 		ALL_UNIT_CLASSES.add(this);
 	}
-
 }
