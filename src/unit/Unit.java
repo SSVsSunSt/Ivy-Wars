@@ -21,9 +21,13 @@ public class Unit {
 	//	Moves
 	private int movementPoints;
 	
+	//	Health
+	private int currentHealth;
+	
 	public Unit(UnitClass unitClass, Player player) {
 		this.unitClass = unitClass;
 		this.owner = player;
+		currentHealth = 100;
 		movementPoints = unitClass.movement;
 	}
 	
@@ -72,4 +76,17 @@ public class Unit {
 	public int getCurrentMovementPoints() {
 		return movementPoints;
 	}
+	
+	/**
+	 * This method gives current health of the unit;
+	 * @return : Integer;
+	 */
+	public int getHealth() {return currentHealth;}
+	
+	/**
+	 * This method sets health to this unit;
+	 * @param health : Integer;
+	 */
+	public void setHealth(int health) {this.currentHealth = health;}
 }
+
