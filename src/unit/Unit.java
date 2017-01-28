@@ -20,7 +20,7 @@ public class Unit {
 	public final Player owner;
 	
 	//	Moves
-	private int movementPoints;
+	private byte movementPoints;
 	
 	//	Health
 	private byte currentHealth;

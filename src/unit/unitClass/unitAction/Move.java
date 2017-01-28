@@ -22,6 +22,7 @@ public class Move extends UnitAction {
 	public void performAction(Map map, Unit unit) {
 		String message;
 		while(StepByStepGameLoop.running) {
+		message = 
 			
 		//	Location chooser
 		try {
