@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 .project/*
 .settings/*
 *.DS_Store
-=======
-.project
-.settings/*
->>>>>>> branch 'master' of https://github.com/SSVsSunSt/Ivy-Wars.git
 .metadata/*
