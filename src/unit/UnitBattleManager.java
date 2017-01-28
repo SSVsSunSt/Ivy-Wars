@@ -25,11 +25,8 @@ public class UnitBattleManager {
 		/**
 		 * @author SunnyP
 		 */
-		
-		return null;
+		return(null);
 	}
-	
-	
 	public class CombatInfo {
 		
 		//	Parameters

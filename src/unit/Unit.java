@@ -5,6 +5,7 @@ import java.awt.Point;
 import map.Map;
 import player.Player;
 import unit.unitClass.UnitClass;
+import unit.unitClass.unitAction.UnitAction;
 
 public class Unit {
 
@@ -97,8 +98,7 @@ public class Unit {
 	 * @return : float;
 	 * @author SunnyP
 	 */
-	public float getRank()
-	{
+	public float getRank() {
 		return rank;
 	}
 	
@@ -107,9 +107,18 @@ public class Unit {
 	 * @param rank : float;
 	 * @author SunnyP
 	 */
-	public void setRank(float rankN) 
-	{
+	public void setRank(float rankN) {
 		this.rank = rankN;
+	}
+	
+	/**
+	 * This method gives action;
+	 * @param index : Integer;
+	 * @return : Action;
+	 * @author timat
+	 */
+	public UnitAction getAction(int index) {
+		return unitClass.actions[index];
 	}
 }
 
