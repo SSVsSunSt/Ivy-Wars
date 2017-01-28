@@ -17,7 +17,7 @@ public class Move extends UnitAction {
 		super("Move", 1);
 	}
 
-	
+	//	
 	@Override
 	public void performAction(Map map, Unit unit) {
 		String message = null;
@@ -29,7 +29,7 @@ public class Move extends UnitAction {
 			message = StepByStepGameLoop.getServer().getCommandFromSecondController();
 		}
 		
-		//	Location chooser
+		//	Location chooser 
 		try {
 		
 			switch(Integer.parseInt(message)) {
