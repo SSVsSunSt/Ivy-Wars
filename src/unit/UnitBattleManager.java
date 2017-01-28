@@ -31,47 +31,43 @@ public class UnitBattleManager {
 		final long HEALTH_COEFF = 1;
 		double uFF = 1.1;
 		double uSF = 1.1;
-		byte uFH = 100;
-		byte uSH = 100;
 		double uFD = 0;
 		double uSD = 0;
-		float uFR = 4;
-		float uSR = 4;
 		boolean triple = false;
-		int rndK = Math.round((1-(uFR+uSR)/8)*random.nextInt((int) (Math.round(((uFF+uFD+uFH+uSF+uSD+uSH)*FIGHT_COEFF_FIRST)/FIGHT_COEFF_SECOND))));
+		int rndK = Math.round((1-(attackingUnit.getRank()+defendingUnit.getRank())/8)*random.nextInt((int) (Math.round(((uFF+uFD+attackingUnit.getHealth()+uSF+uSD+defendingUnit.getHealth())*FIGHT_COEFF_FIRST)/FIGHT_COEFF_SECOND))));
 		if (random.nextInt(2) == 1)
 		{
 			rndK = -rndK;
 		}
 		if (triple)
 		{
-			byte uSC = 0, uFC = 0;
+			byte attackingUnitPoints = 0, defendingUnitPoints = 0;
 			for (byte i=1; i<4; i++)
 			{
-				double uFHAt = uFH-(uSF-uFD)/HEALTH_COEFF+rndK;
-				double uSHAt = uFH-(uSF-uFD)/HEALTH_COEFF+rndK;
-				if (Math.max(uFHAt, uSHAt) == uSHAt)
+				double attackingUnitHealthTemp = defendingUnit.getHealth()-(uSF-uFD)/HEALTH_COEFF+rndK;
+				double defendingUnitHealthTemp = attackingUnit.getHealth()-(uSF-uFD)/HEALTH_COEFF+rndK;
+				if (Math.max(attackingUnitHealthTemp, defendingUnitHealthTemp) == defendingUnitHealthTemp)
 				{
-					uSC++;
+					attackingUnitPoints++;
 				}
 				else
 				{
-					uFC++;
+					defendingUnitPoints++;
 				}
 			}
-			if (Math.max(uSC, uFC) == uFC)
+			if (Math.max(attackingUnitPoints, defendingUnitPoints) == attackingUnitPoints)
 			{
-				byte uSHA = (byte) (uSH-Math.round((uFF-uSD)/HEALTH_COEFF));
-				System.out.println(uSHA);
+				defendingUnit.setHealth((byte) (defendingUnit.getHealth()-Math.round((uFF-uSD)/HEALTH_COEFF)));
+				return(null);
 			}
 			else
 			{
-				byte uFHA = (byte) (uFH-Math.round((uSF-uFD)/HEALTH_COEFF));
-				System.out.println(uFHA);
+				attackingUnit.setHealth((byte) (attackingUnit.getHealth()-Math.round((uSF-uFD)/HEALTH_COEFF)));
+				return(null);
 			}
 		}
-		byte uFHA = (byte) (uFH-Math.round((uSF-uFD)/HEALTH_COEFF+rndK));
-		byte uSHA = (byte) (uSH-Math.round((uFF-uSD)/HEALTH_COEFF-rndK));
+		attackingUnit.setHealth((byte) (attackingUnit.getHealth()-Math.round((uSF-uFD)/HEALTH_COEFF+rndK)));
+		defendingUnit.setHealth((byte) (defendingUnit.getHealth()-Math.round((uFF-uSD)/HEALTH_COEFF-rndK)));
 		return(null);
 	}
 	public class CombatInfo {
