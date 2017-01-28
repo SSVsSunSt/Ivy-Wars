@@ -107,7 +107,8 @@ public class Unit {
 	 * @param rank : float;
 	 * @author SunnyP
 	 */
-	public void setRank(float rankN) {
+	public void setRank(float rankN)
+	{
 		this.rank = rankN;
 	}
 	
@@ -117,7 +118,8 @@ public class Unit {
 	 * @return : Action;
 	 * @author timat
 	 */
-	public UnitAction getAction(int index) {
+	public UnitAction getAction(int index)
+	{
 		return unitClass.actions[index];
 	}
 }
