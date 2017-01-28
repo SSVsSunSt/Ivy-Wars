@@ -3,6 +3,7 @@ package unit.unitClass.unitAction;
 import java.util.LinkedList;
 
 import map.Map;
+import unit.Unit;
 
 public abstract class UnitAction {
 
@@ -22,5 +23,5 @@ public abstract class UnitAction {
 	}
 
 	//	Action
-	public abstract void performAction(Map map);
+	public abstract void performAction(Map map, Unit unit);
 }

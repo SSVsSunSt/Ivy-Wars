@@ -25,7 +25,7 @@ public class Unit {
 	//	Health
 	private byte currentHealth;
 	
-	//Rank
+	//	Rank
 	private float rank;
 	
 	public Unit(UnitClass unitClass, Player player) {
