@@ -5,7 +5,10 @@ import java.util.LinkedList;
 import unit.unitClass.unitAction.UnitAction;
 
 public class UnitClass {
-
+	/**
+	 * @author SunnyP
+	 * Серый был тут
+	 */
 	//	All unit classes
 	public static final LinkedList<UnitClass> ALL_UNIT_CLASSES = new LinkedList<UnitClass>();
 	
@@ -13,7 +16,7 @@ public class UnitClass {
 	//	Properties
 	public final String name;
 	
-	public final float strength;
+	public final float force;
 	
 	public final byte movement;
 	
@@ -22,8 +25,8 @@ public class UnitClass {
 	//	Actions
 	public final UnitAction[] actions;
 	
-	public UnitClass(String name, float strength, byte movements, byte maxRank, UnitAction[] actions) {
-		this.strength = strength;
+	public UnitClass(String name, float force, byte movements, byte maxRank, UnitAction[] actions) {
+		this.force = force;
 		this.movement = movements;
 		this.maxRank = maxRank;
 		this.actions = actions;
