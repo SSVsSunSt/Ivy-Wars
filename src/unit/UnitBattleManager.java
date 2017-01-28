@@ -21,12 +21,7 @@ public class UnitBattleManager {
 		return false;
 	}
 	
-	
-<<<<<<< HEAD
 	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit defendingUnit) {
-=======
-	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit deffendingUnit) {
->>>>>>> branch 'master' of https://github.com/SSVsSunSt/Ivy-Wars.git
 		/*
 		 * 
 		 * 			!!!SEREGA!!!
@@ -34,7 +29,6 @@ public class UnitBattleManager {
 		 */
 		return null;
 	}
-	
 	
 	
 	public class CombatInfo {
