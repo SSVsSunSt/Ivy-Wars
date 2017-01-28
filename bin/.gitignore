@@ -1,1 +1,11 @@
+<<<<<<< HEAD
 /unit/
+=======
+/ev3Controller/
+/unit/
+/gameLoop/
+/gui/
+>>>>>>> branch 'master' of https://github.com/SSVsSunSt/Ivy-Wars.git
+/main/
+/map/
+/player/
