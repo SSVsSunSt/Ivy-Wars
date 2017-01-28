@@ -2,11 +2,13 @@ package unit.unitClass.unitAction;
 
 import java.util.LinkedList;
 
+import map.Map;
+
 public abstract class UnitAction {
 
 	//	All actions
 	public static final LinkedList<UnitAction> ALL_UNIT_ACTIONS = new LinkedList<UnitAction>();
-
+	
 	
 	//	Properties
 	public final String name;
@@ -18,5 +20,5 @@ public abstract class UnitAction {
 	}
 
 	//	Action
-	public abstract void performAction();
+	public abstract void performAction(Map map);
 }

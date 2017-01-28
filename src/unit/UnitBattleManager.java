@@ -22,11 +22,11 @@ public class UnitBattleManager {
 	}
 	
 	
-	public static final CombatInfo performCombat(Map map, Unit attackngUnit, Unit deffendingUnit) {
+	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit deffendingUnit) {
 		/*
 		 * 
 		 * 			!!!SEREGA!!!
-		 * 
+		 *
 		 */
 		return null;
 	}

@@ -12,7 +12,7 @@ public class StepByStepGameLoop implements Runnable {
 	public int currentTurn;
 	
 	//	Controllers
-	private EV3Server server;
+	private static EV3Server server;
 	
 	//	Game stuff
 	protected Map map;
@@ -69,13 +69,18 @@ public class StepByStepGameLoop implements Runnable {
 				public void run() {
 					String message;
 					int unitIndex = 0;
-					int phase = 0;
+					int phase = -1;
 					while(running) {
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {}
 						message = server.getCommandFromSecondController(); 
 						if(message == null) {continue;}
+						
+						//	Action chooser
+						if(phase == -1) {
+							
+						}
 						
 						//	Unit chooser
 						if(phase == 0) {
@@ -226,6 +231,5 @@ public class StepByStepGameLoop implements Runnable {
 	}
 	
 	//	Getters
-	public EV3Server getServer() {return server;}
-	
+	public static EV3Server getServer() {return server;}
 }
