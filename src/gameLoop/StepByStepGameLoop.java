@@ -5,6 +5,7 @@ import java.io.IOException;
 import ev3Controller.EV3Server;
 import map.Map;
 import unit.WrongUnitMoveException;
+import unit.unitClass.unitAction.UnitAction;
 
 public class StepByStepGameLoop implements Runnable {
 
@@ -69,18 +70,14 @@ public class StepByStepGameLoop implements Runnable {
 				public void run() {
 					String message;
 					int unitIndex = 0;
-					int phase = -1;
+					int actionIndex = 0;
+					int phase = 0;
 					while(running) {
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {}
 						message = server.getCommandFromSecondController(); 
 						if(message == null) {continue;}
-						
-						//	Action chooser
-						if(phase == -1) {
-							
-						}
 						
 						//	Unit chooser
 						if(phase == 0) {
@@ -103,39 +100,27 @@ public class StepByStepGameLoop implements Runnable {
 										unitIndex = map.getAllUnits().size() - 1;
 									}
 								break;
+								case EV3Server.ENTER : phase = 1;
+								break;
 							}
 						}
 						
-						//	Unit selector
-						if(Integer.parseInt(message) == EV3Server.ENTER & phase == 0) {
-							phase = 1;
-						}
-						
-						//	Location chooser
-						try {
+						//	Action
 						if(phase == 1) {
 							switch(Integer.parseInt(message)) {
-							case EV3Server.UP : map.getAllUnits().get(unitIndex).move(0, 1, map);
+							case EV3Server.RIGHT : actionIndex++;
+								if(actionIndex > map.getAllUnits().get(unitIndex).unitClass.actions.length) {actionIndex = 1;}
 							break;
-							case EV3Server.DOWN : map.getAllUnits().get(unitIndex).move(0, -1, map);
+							case EV3Server.LEFT : actionIndex--;
+								if(actionIndex < 0) {actionIndex = map.getAllUnits().get(unitIndex).unitClass.actions.length;}
 							break;
-							case EV3Server.RIGHT : map.getAllUnits().get(unitIndex).move(1, 0, map);
+							case EV3Server.ESCAPE : phase = 0;
 							break;
-							case EV3Server.LEFT : map.getAllUnits().get(unitIndex).move(-1, 0, map);
+							case EV3Server.ENTER : map.getAllUnits().get(unitIndex).getAction(actionIndex);
 							break;
 							}
 						}
-						} catch(WrongUnitMoveException e) {
-							
-						}
-						if(map.getAllUnits().get(unitIndex).getCurrentMovementPoints() <= 0) {
-							return;
-						}
 						
-						//	Back
-						if(Integer.parseInt(message) == EV3Server.ESCAPE) {
-							phase = 0;
-						}
 						
 					}
 				}
