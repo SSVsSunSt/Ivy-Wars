@@ -12,7 +12,7 @@ public class Move extends UnitAction {
 	 * @author timat
 	 */
 	public Move() {
-		super("Move");
+		super("Move", 1);
 	}
 
 	

@@ -12,10 +12,12 @@ public abstract class UnitAction {
 	
 	//	Properties
 	public final String name;
+	public final int ID;
 	
-	public UnitAction(String name) {
+	public UnitAction(String name, int id) {
 		this.name = name;
-	
+		this.ID = id;
+		
 		ALL_UNIT_ACTIONS.add(this);
 	}
 
