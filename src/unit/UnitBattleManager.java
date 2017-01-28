@@ -21,7 +21,7 @@ public class UnitBattleManager {
 		return false;
 	}
 	
-	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit defendingUnit) 
+	public static final CombatInfo fight(Map map, Unit attackingUnit, Unit defendingUnit) 
 	{
 		/** @author SunnyP*/
 		final Random random = new Random();

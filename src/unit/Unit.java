@@ -58,7 +58,7 @@ public class Unit {
 			throw new WrongUnitMoveException();
 		}
 		if(UnitBattleManager.battleBegins(map, this, this.x + x, this.y + y)) {
-			UnitBattleManager.performCombat(map, this, map.getUnitOnTile(this.x + x, this.y + y));
+			UnitBattleManager.fight(map, this, map.getUnitOnTile(this.x + x, this.y + y));
 		} else {
 			this.x = this.x + x;
 			this.y = this.y + y;
