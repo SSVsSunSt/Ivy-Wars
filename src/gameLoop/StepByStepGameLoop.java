@@ -5,7 +5,6 @@ import java.io.IOException;
 import ev3Controller.EV3Server;
 import map.Map;
 import unit.WrongUnitMoveException;
-import unit.unitClass.unitAction.UnitAction;
 
 public class StepByStepGameLoop implements Runnable {
 
@@ -116,7 +115,8 @@ public class StepByStepGameLoop implements Runnable {
 							break;
 							case EV3Server.ESCAPE : phase = 0;
 							break;
-							case EV3Server.ENTER : map.getAllUnits().get(unitIndex).getAction(actionIndex);
+							case EV3Server.ENTER : map.getAllUnits().get(unitIndex).getAction(actionIndex).performAction
+							(map, map.getUnit(unitIndex));
 							break;
 							}
 						}

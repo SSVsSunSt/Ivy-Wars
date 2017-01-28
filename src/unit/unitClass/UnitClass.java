@@ -7,7 +7,6 @@ import unit.unitClass.unitAction.UnitAction;
 public class UnitClass {
 	/**
 	 * @author SunnyP
-	 * Серый был тут
 	 */
 	//	All unit classes
 	public static final LinkedList<UnitClass> ALL_UNIT_CLASSES = new LinkedList<UnitClass>();
