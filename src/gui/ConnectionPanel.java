@@ -104,7 +104,7 @@ public class ConnectionPanel extends JPanel  {
 				back.setEnabled(false);
 				try {	
 				loop.initConnection();
-				loop.getServer().registerControllers();
+				StepByStepGameLoop.getServer().registerControllers();
 				} catch (Exception e) {
 					return;
 				}

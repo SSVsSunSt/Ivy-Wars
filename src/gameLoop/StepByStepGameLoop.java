@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import ev3Controller.EV3Server;
 import map.Map;
-import unit.WrongUnitMoveException;
 
 public class StepByStepGameLoop implements Runnable {
 
@@ -75,6 +74,70 @@ public class StepByStepGameLoop implements Runnable {
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {}
+						message = server.getCommandFromFirstController(); 
+						if(message == null) {continue;}
+						
+						//	Unit chooser
+						if(phase == 0) {
+							switch(Integer.parseInt(message)) {
+								case EV3Server.RIGHT : 
+									unitIndex++;
+									if(map.getAllUnits().get(unitIndex).owner != map.getPlayers()[0]) {
+										unitIndex++;
+									}
+									if(unitIndex > map.getAllUnits().size()) {
+										unitIndex = 0;
+									}
+								break;
+								case EV3Server.LEFT : 
+									unitIndex--;
+									if(map.getAllUnits().get(unitIndex).owner != map.getPlayers()[0]) {
+										unitIndex--;
+									}
+									if(unitIndex < 0) {
+										unitIndex = map.getAllUnits().size() - 1;
+									}
+								break;
+								case EV3Server.ENTER : phase = 1;
+								break;
+							}
+						}
+						
+						//	Action
+						if(phase == 1) {
+							switch(Integer.parseInt(message)) {
+							case EV3Server.RIGHT : actionIndex++;
+								if(actionIndex > map.getAllUnits().get(unitIndex).unitClass.actions.length) {actionIndex = 1;}
+							break;
+							case EV3Server.LEFT : actionIndex--;
+								if(actionIndex < 0) {actionIndex = map.getAllUnits().get(unitIndex).unitClass.actions.length;}
+							break;
+							case EV3Server.ESCAPE : phase = 0;
+							break;
+							case EV3Server.ENTER : map.getAllUnits().get(unitIndex).getAction(actionIndex).performAction
+							(map, map.getUnit(unitIndex));
+							break;
+							}
+						}
+						if(map.getAllUnits().get(unitIndex).getCurrentMovementPoints() == 0) {return;}
+						
+					}
+				}
+			} ,"player1Thread");
+			thread1.start();
+			
+			//	Player 2
+			Thread thread2 = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					String message;
+					int unitIndex = 0;
+					int actionIndex = 0;
+					int phase = 0;
+					while(running) {
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e) {}
 						message = server.getCommandFromSecondController(); 
 						if(message == null) {continue;}
 						
@@ -120,81 +183,7 @@ public class StepByStepGameLoop implements Runnable {
 							break;
 							}
 						}
-						
-						
-					}
-				}
-			} ,"player1Thread");
-			thread1.start();
-			
-			//	Player 2
-			Thread thread2 = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					String message;
-					int unitIndex = 0;
-					int phase = 0;
-					while(running) {
-						try {
-							Thread.sleep(10);
-						} catch (InterruptedException e) {}
-						message = server.getCommandFromFirstController(); 
-						if(message == null) {continue;}
-						
-						//	Unit chooser
-						if(phase == 0) {
-							switch(Integer.parseInt(message)) {
-								case EV3Server.RIGHT : 
-									unitIndex++;
-									if(map.getAllUnits().get(unitIndex).owner != map.getPlayers()[1]) {
-										unitIndex++;
-									}
-									if(unitIndex > map.getAllUnits().size()) {
-										unitIndex = 0;
-									}
-								break;
-								case EV3Server.LEFT : 
-									unitIndex--;
-									if(map.getAllUnits().get(unitIndex).owner != map.getPlayers()[1]) {
-										unitIndex--;
-									}
-									if(unitIndex < 0) {
-										unitIndex = map.getAllUnits().size() - 1;
-									}
-								break;
-							}
-						}
-						
-						//	Unit selector
-						if(Integer.parseInt(message) == EV3Server.ENTER & phase == 0) {
-							phase = 1;
-						}
-						
-						//	Location chooser
-						try {
-						if(phase == 1) {
-							switch(Integer.parseInt(message)) {
-							case EV3Server.UP : map.getAllUnits().get(unitIndex).move(0, 1, map);
-							break;
-							case EV3Server.DOWN : map.getAllUnits().get(unitIndex).move(0, -1, map);
-							break;
-							case EV3Server.RIGHT : map.getAllUnits().get(unitIndex).move(1, 0, map);
-							break;
-							case EV3Server.LEFT : map.getAllUnits().get(unitIndex).move(-1, 0, map);
-							break;
-							}
-						}
-						} catch(WrongUnitMoveException e) {
-							
-						}
-						if(map.getAllUnits().get(unitIndex).getCurrentMovementPoints() <= 0) {
-							return;
-						}
-						
-						//	Back
-						if(Integer.parseInt(message) == EV3Server.ESCAPE) {
-							phase = 0;
-						}
+						if(map.getAllUnits().get(unitIndex).getCurrentMovementPoints() == 0) {return;}
 						
 					}
 				}

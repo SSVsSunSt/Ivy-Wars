@@ -20,10 +20,15 @@ public class Move extends UnitAction {
 	
 	@Override
 	public void performAction(Map map, Unit unit) {
-		String message;
+		String message = null;
 		while(StepByStepGameLoop.running) {
-		message = 
-			
+		if(unit.owner == map.getPlayers()[0]) {
+		message = StepByStepGameLoop.getServer().getCommandFromFirstController();
+		} 
+		if(unit.owner == map.getPlayers()[1]) {
+			message = StepByStepGameLoop.getServer().getCommandFromSecondController();
+		}
+		
 		//	Location chooser
 		try {
 		
