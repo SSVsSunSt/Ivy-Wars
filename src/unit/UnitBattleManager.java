@@ -21,10 +21,9 @@ public class UnitBattleManager {
 		return false;
 	}
 	
-	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit defendingUnit) {
-		/**
-		 * @author SunnyP
-		 */
+	public static final CombatInfo performCombat(Map map, Unit attackingUnit, Unit defendingUnit) 
+	{
+		/** @author SunnyP*/
 		return(null);
 	}
 	public class CombatInfo {
